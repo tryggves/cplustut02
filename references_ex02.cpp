@@ -10,7 +10,9 @@
 int& foo() {int x=10; return x;}
 
 // This will work with global static variable
-int x_glob = 23;
+int x_glob = 23;        // Global variable that can be returned by function globref
+
+// This function parameter is reference to int, which is returned. Just as an example
 int& globref (int& x) {return x;}
 
 int main(int argc, char* argv[]) {
@@ -32,6 +34,7 @@ int main(int argc, char* argv[]) {
     /*
     a*b = 20;       // will not compile as a*b is a rvalue
     //*/
+    std::cout << "=== EXAMPLE 1" << std::endl;
     int c = a*b;
     std::cout << "a = " << a << "\t\tb = " << b << std::endl;
     std::cout << "a * b = " << c << std::endl;
@@ -44,8 +47,15 @@ int main(int argc, char* argv[]) {
     std::cout << "\t\t\tj = " << j << std::endl;    // Causes SIGSEGV
     //*/
 
+    std::cout << "=== EXAMPLE 2" << std::endl;
     int k = 34;
-    std::cout << "k = " << k << "\t\tx_glob = " << x_glob << std::endl;
+    std::cout << "Before assignment: k = " << k << "\t\tx_glob = " << x_glob << std::endl;
     k = globref(x_glob);
-    std::cout << "k = " << k << std::endl;
+    std::cout << "After assignment: k = " << k << std::endl;
+
+    // Try globref() function on the left hand side of the assignment
+    std::cout << "=== EXAMPLE 3" << std::endl;
+    std::cout << "Before assignment: x_glob = " << x_glob << std::endl;
+    globref(x_glob) = 3487;     // Assign new number to the global variable
+    std::cout << "After assignment: x_glob = " << x_glob << std::endl;
 }
