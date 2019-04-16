@@ -7,13 +7,28 @@
 
 #include <iostream>
 // Will compile, but x is local variable and undefined when out of function scope
+/*
 int& foo() {int x=10; return x;}
+//*/
 
 // This will work with global static variable
 int x_glob = 23;        // Global variable that can be returned by function globref
 
 // This function parameter is reference to int, which is returned. Just as an example
 int& globref (int& x) {return x;}
+
+template <typename T>
+void mytempfunc (T param) {
+    std::cout << "In function mytempfunc() param is: " << param << std::endl;
+}
+
+// Function template where the param is declared as rvalue reference
+template <typename T>
+void mytempfunc_b (T&& param) {
+    std::cout << "In mytempfunc_b() param is: " << param << std::endl;
+    // Try a side effect
+    param = 467;
+}
 
 int main(int argc, char* argv[]) {
     std::cout << "==========================================================================" << std::endl;
@@ -58,4 +73,27 @@ int main(int argc, char* argv[]) {
     std::cout << "Before assignment: x_glob = " << x_glob << std::endl;
     globref(x_glob) = 3487;     // Assign new number to the global variable
     std::cout << "After assignment: x_glob = " << x_glob << std::endl;
+
+    // Try out copy by value
+    std::cout << "=== EXAMPLE 4" << std::endl;
+    int m_var1 = 1;
+    const int m_var2 = m_var1;
+    const int& m_var3 = m_var1;
+    mytempfunc(m_var1);
+    mytempfunc(m_var2);     // const is ignored
+    mytempfunc(m_var3);     // const is ignored
+
+    // Try out rvalue param template function
+    std::cout << "=== EXAMPLE 5" << std::endl;
+    int m_var4 = 25;
+    const int m_var5 = m_var4;
+    const int& m_var6 = m_var4;
+    mytempfunc_b(m_var4);
+    std::cout << "After int: m_var4 = " << m_var4 << std::endl;
+
+    // This gives compile error because the function tries to assign value to const argument
+    // mytempfunc_b(m_var5);
+    // std::cout << "After const int: m_var5 = " << m_var5 << std::endl;
+    // mytempfunc_b(m_var6);
+    // std::cout << "After const int&: m_var4 = " << m_var4 << std::endl;
 }
