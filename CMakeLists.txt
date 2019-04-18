@@ -7,3 +7,4 @@ add_executable(functional_ex functional_ex.cpp)
 
 add_executable(references_ex01 references_ex01.cpp)
 add_executable(references_ex02 references_ex02.cpp)
+add_executable(template_ex01 template_ex01.cpp)
