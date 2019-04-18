@@ -1,0 +1,1 @@
+add_executable(template_ex01 template_ex01.cpp Calc.cpp)
