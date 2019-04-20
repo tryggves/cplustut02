@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
     std::cout << "EXAMPLE 2: CUSTOM CLASS IN VECTOR" << std::endl;
     std::vector<MyNumContainer<int>> mNCvec;
     for (i=0; i<10; i++) {
-        MyNumContainer<int> mnc(i);
+        MyNumContainer<int> mnc(i);     // Calls the constructor of class MyNumContainer
         mNCvec.push_back(mnc);
     }
     std::cout << "Size of mNCvec: " << mNCvec.size() << std::endl;
@@ -62,4 +62,20 @@ int main(int argc, char **argv) {
     }
     std::cout << std::endl;
 
+    // Can we make pointers to the class
+    std::cout << "EXAMPLE 3: CUSTOM CLASS POINTERS IN VECTOR" << std::endl;
+    std::vector<MyNumContainer<int>*> mNCPvec;
+    std::cout << "Size of mNCPvec: " << mNCPvec.size() << std::endl;
+    // Pointer variable
+    MyNumContainer<int>* mNCP;
+    for (i=0; i<10; i++) {
+        mNCP = new MyNumContainer<int>(i);  // Instantiate class on heap
+        mNCPvec.push_back(mNCP);
+    }
+    std::cout << "Size of mNCPvec: " << mNCPvec.size() << std::endl;
+    std::cout << "mNCPvec contains: ";
+    for (MyNumContainer<int>* xp:mNCPvec) {
+        std::cout << *xp << " ";
+    }
+    std::cout << std::endl;
 }
