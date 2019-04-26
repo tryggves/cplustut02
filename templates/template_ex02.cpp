@@ -14,6 +14,8 @@ class MyNumContainer {
     T m_value;
 
 public:
+    // Here is the constructor - initialize member property m_value
+    // Constructor body is empty
     MyNumContainer (T val) : m_value (val) {};
 
     // Here is how to overload the output stream operator
@@ -30,7 +32,7 @@ int main(int argc, char **argv) {
     std::cout << "=== Number of arguments: " << argc << std::endl;
     std::cout << "==========================================================================" << std::endl;
 
-    std::cout << "EXAMPLE: Vector container" << std::endl;
+    std::cout << "EXAMPLE: Vector container of integers" << std::endl;
     std::vector<int> intVec;
     int i;
 
