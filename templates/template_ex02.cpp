@@ -11,10 +11,27 @@
 // EXAMPLE 2: Define class to be contained in vector
 template <class T>
 class MyNumContainer {
+
+
     T m_value;
 
 public:
-    MyNumContainer (T val) : m_value (val) {};
+    MyNumContainer (T val) : m_value (val) {
+
+        // EXAMPLE: Illustrate UNSCOPED ENUM
+        // The names from the enum leaks into the containing scope
+        enum ContainerForm {small, medium, large}; // UNSCOPED ENUM - here it shows the normal use
+        ContainerForm form = small;
+        /*
+        // Try to declare small as bool, but Heltall has leaked into this scope
+        bool small = false;       // WILL NOT COMPILE
+        //*/
+        // SCOPED ENUM OR CLASS ENUM WILL SOLVE THIS
+        enum class ContainerColor {white, blue, red};
+        ContainerColor myCont = ContainerColor ::white;
+        bool white = false;
+
+    };
 
     // Here is how to overload the output stream operator
     friend std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) {

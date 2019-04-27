@@ -8,6 +8,8 @@ Self training on C++ coding.
  * type casting
  * standard library - selected topics
  
+Initialization: Initialization of variables of various types. 
+
 Functional: Standard library feature for working with functions.
 
 References: Handling of references, pointers, dynamic memory
