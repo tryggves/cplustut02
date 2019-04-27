@@ -11,14 +11,10 @@
 // EXAMPLE 2: Define class to be contained in vector
 template <class T>
 class MyNumContainer {
-
-
     T m_value;
 
 public:
     // Here is the constructor - initialize member property m_value
-    // Constructor body is empty
-    MyNumContainer (T val) : m_value (val) {};
     MyNumContainer (T val) : m_value (val) {
 
         // EXAMPLE: Illustrate UNSCOPED ENUM
