@@ -19,6 +19,8 @@ public:
 
         // EXAMPLE: Illustrate UNSCOPED ENUM
         // The names from the enum leaks into the containing scope
+        // Underlying default type for both unscoped and scoped enums is integer,
+        // but that can be overridden.
         enum ContainerForm {small, medium, large}; // UNSCOPED ENUM - here it shows the normal use
         ContainerForm form = small;
         /*
@@ -26,7 +28,8 @@ public:
         bool small = false;       // WILL NOT COMPILE
         //*/
         // SCOPED ENUM OR CLASS ENUM WILL SOLVE THIS
-        enum class ContainerColor {white, blue, red};
+        // This declaration uses specified underlying type of std::uint32_t
+        enum class ContainerColor: std::uint32_t {white = 0, blue = 1, red = 2};
         ContainerColor myCont = ContainerColor ::white;
         bool white = false;
 
