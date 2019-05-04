@@ -8,17 +8,23 @@
 // Try to code a specific class first an then refactor to template class
 class Calc {
 public:
-    int add (int a, int b);
-    int sub (int a, int b);
+    //
+    // NOTE:
+    // Declaring member functions as const (after the parameter section) means that
+    // these functions will not modify any state of Calc.
+    // The function definitions (in the CPP file has to match these const declarations or the
+    // compilation will fail.
+    int add (int a, int b) const;
+    int sub (int a, int b) const;
 };
 
 // Generic calculator
 template <class CalcType>
 class TCalc {
 public:
-    CalcType add (CalcType a, CalcType b) { return a+b; };
-    CalcType sub (CalcType a, CalcType b) { return a-b; };
-    CalcType mul (CalcType a, CalcType b) { return a*b; };
+    CalcType add (CalcType a, CalcType b) const { return a+b; };
+    CalcType sub (CalcType a, CalcType b) const { return a-b; };
+    CalcType mul (CalcType a, CalcType b) const { return a*b; };
 };
 
 //Lot of typing - do it inline if oneliners such as above.

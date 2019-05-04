@@ -5,6 +5,8 @@
 #include "Calc.h"
 
 // Integer calculator implementation
-int Calc::add(int a, int b) { return a+b; }
-int Calc::sub(int a, int b) { return a-b; }
+// NOTE: The const after the function declaration signals that the function will not modify
+// the Calc object state.
+int Calc::add(int a, int b) const { return a+b; }
+int Calc::sub(int a, int b) const { return a-b; }
 
