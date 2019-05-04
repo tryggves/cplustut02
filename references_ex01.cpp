@@ -41,6 +41,7 @@ int main (int argc, char **argv) {
     i = 43;         // should work
     int  *p = &i;   // i is lvalue
 
+    // int& foo(int &x) {
     int& q = foo(i);
     std::cout << "i=" << i << "\t\tq=" << q << std::endl;
     std::cout << "Testing function templates." << std::endl;

@@ -1,12 +1,12 @@
-Self training on C++ coding.
+###### Self training on C++ coding.
 
 
  * Some ideas:
- * pointers and references
+ * pointers and references - smart pointers
  * auto
  * templates
  * type casting
- * standard library - selected topics
+ * standard library - selected topics - will be trickling in through the examples
  
 Initialization: Initialization of variables of various types. 
 

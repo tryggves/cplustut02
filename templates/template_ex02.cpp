@@ -97,4 +97,12 @@ int main(int argc, char **argv) {
         std::cout << *xp << " ";
     }
     std::cout << std::endl;
+
+    /*
+    // Can we use a reference to the contained elements
+    // THIS WILL NOT COMPILE - CANNOT CONVERT FROM INT POINTER TO INT REFERENCE
+    for (MyNumContainer<int>& xr:mNCPvec) {
+        std::cout << xr << " ";
+    }
+    //*/
 }

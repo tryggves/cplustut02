@@ -9,3 +9,4 @@ add_executable(references_ex02 references_ex02.cpp)
 add_executable(initialization_ex initialization_ex.cpp)
 
 add_subdirectory(templates)
+add_subdirectory(smartpointers)
