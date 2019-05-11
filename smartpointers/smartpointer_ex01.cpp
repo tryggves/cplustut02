@@ -33,6 +33,27 @@ public:
     ~Rectangle(){std::cout << m_id << ": Rectangle destructor" << std::endl;}
 };
 
+void run_example () {
+    std::cout << "Creating raw pointer myRect...\n";
+    Rectangle* myRect = new Rectangle(1, 1);
+    myRect->setId("myRect");
+    std::cout << "The area of myRect is: " << myRect->area() << std::endl;
+    /* code to delete the object
+    delete myRect;
+    //*/
+
+    std::cout << std::endl;
+
+    // Notice that when the smart pointer mySharedRect goes out of scope, the destructor
+    // is called - in contrast to the above code where we have a raw pointer end we have to
+    // manage the destruction of the object ourselves.
+    // The code above does not call the destructur and hence we have a memory leak
+    std::cout << "Creating shared pointer mySharedRect...\n";
+    std::shared_ptr<Rectangle> mySharedRect = std::make_shared<Rectangle>(1, 2);
+    mySharedRect->setId("mySharedRect");
+    std::cout << "The area of mySharedRect is: " << mySharedRect->area() << std::endl;
+}
+
 int main(int argc, char **argv) {
     std::cout << "==========================================================================" << std::endl;
     std::cout << "=== SMARTPOINTER EXAMPLE                                              ====" << std::endl;
@@ -40,13 +61,5 @@ int main(int argc, char **argv) {
     std::cout << "=== Number of arguments: " << argc << std::endl;
     std::cout << "==========================================================================" << std::endl;
 
-    std::cout << "Creating raw pointer myRect...\n";
-    Rectangle* myRect = new Rectangle(1, 1);
-    myRect->setId("myRect");
-    std::cout << "The area of myRect is: " << myRect->area() << std::endl;
-
-    std::cout << "Creating shared pointer mySharedRect...\n";
-    std::shared_ptr<Rectangle> mySharedRect = std::make_shared<Rectangle>(1, 2);
-    mySharedRect->setId("mySharedRect");
-    std::cout << "The area of mySharedRect is: " << mySharedRect->area() << std::endl;
+    run_example();
 }
