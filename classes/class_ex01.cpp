@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <initializer_list>
+#include <vector>
 
 // Anonymous namespace - limits scope of names to the source file
 namespace {
@@ -22,10 +24,13 @@ private:
     std::string id = "class Vector";    // Identifier - TODO maybe some std:: methods can provide this
 
 public:
-    // Constructor of double vector of size s
+    // Constructor of double vector of size s and initialized each element to zero.
     Vector(int s) : elem{new double[s]}, sz{s} {
         for(int i=0; i<s; ++i) elem[i]=0;
     }
+
+    // Initializer list constructor using std::initilizer_list
+    Vector (std::initializer_list<double> l) {}
 
     // Destructor - release the resources
     ~Vector() {
@@ -35,6 +40,35 @@ public:
 
     // Here is how to overload the output stream operator
     friend std::ostream& operator<<( std::ostream& output, const Vector& vec ) {
+        output << vec.id;
+        return output;
+    }
+
+    double& operator[](int i) { return elem[i]; };
+    int size() const { return sz; };
+};
+
+// Vector with initializer list constructor
+class ILVector {
+private:
+    std::vector<double> elem ;       // Array of vector elements (to be allcoated)
+    int sz;             // Size of the vector
+    std::string id = "class ILVector";    // Identifier - TODO maybe some std:: methods can provide this
+
+public:
+
+    // Initializer list constructor using std::initilizer_list
+    ILVector (std::initializer_list<double> l) : elem(l) { sz = elem.size(); }
+
+
+    // Destructor - release the resources
+    ~ILVector() {
+        std::cout << id << ": In destructor" << std::endl;
+        //delete[] elem;  // Deletes the double array
+    }
+
+    // Here is how to overload the output stream operator
+    friend std::ostream& operator<<( std::ostream& output, const ILVector& vec ) {
         output << vec.id;
         return output;
     }
@@ -80,6 +114,18 @@ void run_example2() {
     delete(myVectorPointer);
 }
 
+// Try the initializer_list constructor
+void run_example3() {
+    std::cout << "\n=== EXAMPLE 3 ===\n";
+
+    ILVector iListVector {1,2,3,4,5};
+    std::cout << "iListVector content: ";
+    for (int i=0; i<iListVector.size(); ++i){
+        std::cout << iListVector[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 int main(int argc, char **argv) {
     std::cout << "==========================================================================" << std::endl;
     std::cout << "=== CLASSES EXAMPLE 01                                                ====" << std::endl;
@@ -89,4 +135,5 @@ int main(int argc, char **argv) {
 
     run_example1();
     run_example2();
+    run_example3();
 }
