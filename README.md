@@ -17,3 +17,5 @@ allocation etc.
 
 Templates: Generic programming - coding with templates and applying
 Standard Template Library.
+
+Classes: Basic classes examples - abstraction.
