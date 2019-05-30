@@ -19,6 +19,9 @@ namespace {
 // This example shows a container class - the popular Vector container - similar to the std::vector class
 class Vector {
 private:
+    // Vector representation by dynamically allocating memory
+    // What happens if there is need to increase the size of the vector? Class implementation
+    // has to manage this.
     double *elem;       // Array of vector elements (to be allcoated)
     int sz;             // Size of the vector
     std::string id = "class Vector";    // Identifier - TODO maybe some std:: methods can provide this
@@ -51,6 +54,7 @@ public:
 // Vector with initializer list constructor
 class ILVector {
 private:
+    // Vector representation by the standard library std::vector class.
     std::vector<double> elem ;       // Array of vector elements (to be allcoated)
     int sz;             // Size of the vector
     std::string id = "class ILVector";    // Identifier - TODO maybe some std:: methods can provide this
@@ -111,7 +115,8 @@ void run_example2() {
 
     // NOTE!
     // Forget to call destructor and you will have a memory leak
-    delete(myVectorPointer);
+    // COMMENT OUT TO TEST.
+    // delete(myVectorPointer);
 }
 
 // Try the initializer_list constructor
