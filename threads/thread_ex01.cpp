@@ -46,6 +46,11 @@ void task2() {
     std::cout << "\nTask 2 number of iterations: " << numIterations << std::endl;
 }
 
+// Implement task as a FUNCTION OBJECT
+struct task3 {
+    void operator()() { std::cout << "Hello, I am task3: " << std::endl; }
+};
+
 int main(int argc, char **argv) {
     std::cout << "==========================================================================" << std::endl;
     std::cout << "=== CLASSES EXAMPLE 02                                                ====" << std::endl;
@@ -54,9 +59,14 @@ int main(int argc, char **argv) {
 
     std::thread t1 {task1};
     std::thread t2 {task2};
+    std::thread t3 {task3()};
 
     t1.join();
     t2.join();
+    t3.join();
+
+    // task3 t3;
+    // t3();
 
     std::cout << std::endl;
 
