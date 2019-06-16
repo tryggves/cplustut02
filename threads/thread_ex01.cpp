@@ -65,6 +65,7 @@ int main(int argc, char **argv) {
     t2.join();
     t3.join();
 
+    // This calls the operator() of task3 in the main thread
     // task3 t3;
     // t3();
 
