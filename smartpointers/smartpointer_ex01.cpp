@@ -47,7 +47,7 @@ void run_example () {
     // Notice that when the smart pointer mySharedRect goes out of scope, the destructor
     // is called - in contrast to the above code where we have a raw pointer end we have to
     // manage the destruction of the object ourselves.
-    // The code above does not call the destructur and hence we have a memory leak
+    // The code above does not call the destructor and hence we have a memory leak
     std::cout << "Creating shared pointer mySharedRect...\n";
     std::shared_ptr<Rectangle> mySharedRect = std::make_shared<Rectangle>(1, 2);
     mySharedRect->setId("mySharedRect");

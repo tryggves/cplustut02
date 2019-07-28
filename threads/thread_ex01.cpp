@@ -8,11 +8,13 @@
 #include <thread>
 #include <chrono>
 
+const int numIterations=1000;       // Number of iterations to be performed by tasks
+
 // TASK: Function or function object.
 void task1() {
     std::cout << "Hello, I am task1: ";
 
-    for (int i=0; i<1000; ++i) {
+    for (int i=0; i<numIterations; ++i) {
         std::cout << "1";
 
         // Print newline on every 20th iteration
@@ -22,14 +24,14 @@ void task1() {
 
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
-    std::cout << "Task 1 done.";
+    std::cout << ".";
 }
 
 // TASK
 void task2() {
     std::cout << "Hello, I am task2: ";
 
-    for (int i=0; i<1000; ++i) {
+    for (int i=0; i<numIterations; ++i) {
         std::cout << "2";
 
         // Print newline on every 20th iteration
@@ -37,9 +39,11 @@ void task2() {
             std::cout << std::endl;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        // sleeping 50% longer on each iteration for this task will show up in the output, as
+        // task 1 has to wait for this  task to finish.
+        std::this_thread::sleep_for(std::chrono::milliseconds(15));
     }
-    std::cout << "Task 2 done.";
+    std::cout << "\nTask 2 number of iterations: " << numIterations << std::endl;
 }
 
 int main(int argc, char **argv) {
