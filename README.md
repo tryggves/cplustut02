@@ -1,21 +1,27 @@
 ###### Self training on C++ coding.
 
 
- * Some ideas:
+Some ideas:
  * pointers and references - smart pointers
  * auto
  * templates
  * type casting
  * standard library - selected topics - will be trickling in through the examples
  
-Initialization: Initialization of variables of various types. 
+initialization_ex: Initialization of variables of various types. 
 
-Functional: Standard library feature for working with functions.
+functional_ex: Standard library feature for working with functions.
 
-References: Handling of references, pointers, dynamic memory
+references_ex*: Handling of references, pointers, dynamic memory
 allocation etc.
 
-Templates: Generic programming - coding with templates and applying
+templates/: Generic programming - coding with templates and applying
 Standard Template Library.
 
-Classes: Basic classes examples - abstraction.
+classes/: Basic classes examples - abstraction.
+
+smartpointers/: Standard library pointer support, aka smart pointers as
+opposed to raw pointers. Automated handling of pointers and scope, avoiding memory
+leaks.
+
+threads/: Standard library thread support - builds on pthreads. 
