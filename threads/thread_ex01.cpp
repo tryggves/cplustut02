@@ -46,18 +46,40 @@ void task2() {
     std::cout << "\nTask 2 number of iterations: " << numIterations << std::endl;
 }
 
+// TASK IMPLEMENTED AS FUNCTION OBJECT
+// Notice struct and class mean the same thing.
+struct F {
+    void operator () () { std::cout << "Hello I am task F\n"; }
+};
+
+class F2 {
+public:
+    void operator () () { std::cout << "Hello I am task F2\n"; }
+};
+
 int main(int argc, char **argv) {
     std::cout << "==========================================================================" << std::endl;
     std::cout << "=== CLASSES EXAMPLE 02                                                ====" << std::endl;
     std::cout << "=== Program name: " << argv[0] << std::endl;
     std::cout << "=== Number of arguments: " << argc << std::endl;
 
-    std::thread t1 {task1};
-    std::thread t2 {task2};
+    // NOTICE THE DIFFERENCE IN SYNTAX WHEN USING ORDINARY PARANTHESIS FOR THE t4 VARIABLE.
+    // NOT REALLY SURE WHAT IS GOING ON THERE. It has to do with initialization of variables
+    // and is described in Stroustrup. But still a bit cryptic...
+    // std::thread t1 {task1};
+    // std::thread t2 (task2);
+    std::thread t3 {F()};
+    std::thread t4 ( (F2()) );
 
-    t1.join();
-    t2.join();
+    // t1.join();
+    // t2.join();
+    t3.join();
+    t4.join();
 
     std::cout << std::endl;
+
+    // Can we call F2??
+    F2 f1( (F2()) );
+    // F2 f2{F2()};
 
 }
