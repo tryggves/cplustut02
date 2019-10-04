@@ -25,3 +25,4 @@ opposed to raw pointers. Automated handling of pointers and scope, avoiding memo
 leaks.
 
 threads/: Standard library thread support - builds on pthreads. 
+Standard library future and async.
