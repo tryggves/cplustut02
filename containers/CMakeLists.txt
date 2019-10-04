@@ -1,0 +1,1 @@
+add_executable(pair_ex01 pair_ex01.cpp)
