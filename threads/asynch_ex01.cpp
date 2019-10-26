@@ -64,13 +64,17 @@ namespace {
       countIterations++;
       std::this_thread::sleep_for(std::chrono::seconds(2));
 
+      // After 10 iterations start a new task that will execute the starting point
+      // Adapter::asynchRunTask(). It takes one parameter, the value of 100 - this
+      // is just to illustrate passing parameters to the task.
+      
       if (countIterations==10) {
         // Run aynchronous thread
         asyncStatus = std::async(std::launch::async, &Adapter::asyncRunTask, this, 100);
 
         // This call makes the  main thread wait until the asyncRunTask has finished.
         asyncStatus.wait();
-        countIterations = 0;    // Reset counter
+        countIterations = 0;    // Reset counter - the outer loop will then commence
       }
     }
 
@@ -101,7 +105,7 @@ namespace {
   }
 
 
-}
+} // END ANONYMOUS NAMESPACE
 
 int main(int argc, char **argv) {
   std::cout << "==========================================================================" << std::endl;
