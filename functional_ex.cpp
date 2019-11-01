@@ -13,6 +13,8 @@
 #include <iostream>
 #include <functional>
 
+// Check this good explanation about std::bind
+// https://stackoverflow.com/questions/37636373/how-stdbind-works-with-member-functions
 
 void f(int a, int b, int c) {
     std::cout << "a=" << a <<"\t\tb=" << b << "\t\tc=" << c << std::endl;
