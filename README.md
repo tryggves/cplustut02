@@ -10,7 +10,8 @@ Some ideas:
  
 initialization_ex: Initialization of variables of various types. 
 
-functional_ex: Standard library feature for working with functions.
+functional_ex: Standard library feature for working with functions. You find good std::bind() examples
+here including bind to class member functions.
 
 references_ex*: Handling of references, pointers, dynamic memory
 allocation etc.
