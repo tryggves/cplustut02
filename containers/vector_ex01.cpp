@@ -13,17 +13,17 @@ int main (int argc, char **argv){
     std::cout << "=== Number of arguments: " << argc << std::endl;
     std::cout << "==========================================================================" << std::endl;
 
-    std::map<std::string, std::string> pMap1 = {
+    std::map<std::string, std::string> pMap1 {
             {"vdbExchange", "MessagingExchange"},
             {"vdbTopic", "Vessebus.topic1"},
             {"adapterType", "FORWARD"}
     };
 
 
-    std::map<std::string, std::string> pMap2 = {
+    std::map<std::string, std::string> pMap2 {{
             {"vdbExchange", "MessagingExchange"},
             {"vdbTopic", "Vessebus.topic2"},
-            {"adapterType", "INTERNAL"}
+            {"adapterType", "INTERNAL"}}
     };
 
     std::vector<std::map<std::string, std::string>> listeners;

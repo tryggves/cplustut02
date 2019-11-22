@@ -20,6 +20,14 @@ public:
     // int c(0);       // Does not work
 };
 
+/**
+ * Uniform initialization was introduced with C++11
+ */
+struct MySt {
+    int num1 {10};
+    int num2 {20};
+};
+
 int main (int argc, char *argv[]) {
     std::cout << "==========================================================================" << std::endl;
     std::cout << "=== INITIALIZATION EXAMPLES                                           ====" << std::endl;
@@ -47,4 +55,9 @@ int main (int argc, char *argv[]) {
     c1 = c2;    // ASSIGNMENT: This calls the copy operator=
     std::cout << "c1.a = " << c1.a
               << "\tc1.b = " << c1.b << std::endl;
+
+    std::cout << "EXAMPLE 3: UNIFORM INITIALIZATION\n";
+    MySt mySt;
+    std::cout << "mySt.num1: " << mySt.num1 << "\n";
+    std::cout << "mySt.num2: " << mySt.num2 << "\n";
 }
