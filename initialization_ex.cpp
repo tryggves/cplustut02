@@ -21,7 +21,8 @@ public:
 };
 
 /**
- * Uniform initialization was introduced with C++11
+ * Uniform initialization was introduced with C++11 using braces for initialization.
+ * This can be used for all types.
  */
 struct MySt {
     int num1 {10};
