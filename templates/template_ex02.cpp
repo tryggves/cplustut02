@@ -24,19 +24,20 @@ public:
         enum ContainerForm {small, medium, large}; // UNSCOPED ENUM - here it shows the normal use
         ContainerForm form = small;
         /*
-        // Try to declare small as bool, but Heltall has leaked into this scope
+        // Try to declare small as bool, but "small" has leaked into this scope
         bool small = false;       // WILL NOT COMPILE
         //*/
         // SCOPED ENUM OR CLASS ENUM WILL SOLVE THIS
         // This declaration uses specified underlying type of std::uint32_t
         enum class ContainerColor: std::uint32_t {white = 0, blue = 1, red = 2};
         ContainerColor myCont = ContainerColor ::white;
-        bool white = false;
+        bool white = true;
 
     };
 
     // Here is how to overload the output stream operator
     friend std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) {
+    // std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) {
         output << mNC.m_value;
         return output;
     }
@@ -76,7 +77,7 @@ int main(int argc, char **argv) {
     }
     std::cout << "Size of mNCvec: " << mNCvec.size() << std::endl;
     std::cout << "mNCvec contains: ";
-    for (MyNumContainer<int> x:mNCvec) {
+    for (MyNumContainer<int> x : mNCvec) {
         std::cout << x << " ";
     }
     std::cout << std::endl;

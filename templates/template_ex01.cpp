@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 
     std::cout << "EXAMPLE 2: Template class" << std::endl;
     TCalc<float> myFloatCalc;
-    std::cout << "2.0 + 3.0 = " <<   myFloatCalc.add(2.0, 3.0) << std::endl;
+    std::cout << "2.0 + 3.0 = " << myFloatCalc.add(2.0, 3.0) << std::endl;
     std::cout << "2.0 - 3.0 = " << myFloatCalc.sub(2.0, 3.0) << std::endl;
     std::cout << "2.0 * 3.0 = " << myFloatCalc.mul(2.0, 3.0) << std::endl;
 }

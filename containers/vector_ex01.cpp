@@ -19,6 +19,7 @@ void example3 () {
     std::deque<float> myFltDeque;       // Declares empty
 
     // Notice this initialization of i in the for loop
+    std::cout << "Push to front of deque...\n";
     for (int i : {1,2,3,4,5,6}) {
         std::cout << "i: " << i << "\n";
         // This pushes numbers to the front of the vector
@@ -34,19 +35,28 @@ void example3 () {
 
     // Push to back of vector
     // Notice this initialization of i in the for loop
-    std::cout << "Push to back of vector...\n";
+    std::cout << "Push to back of deque...\n";
     for (int i : {1,2,3,4,5,6}) {
         std::cout << "i: " << i << "\n";
         // This pushes numbers to the back of the vector
         myFltDeque.push_back(i*1.1);
     }
 
-    // Iterate through the array
+    // Iterate through the array - implicit iterator usage
     std::cout << "myFltDeque: ";
     for (auto e : myFltDeque) {
-        std::cout << e << ", ";
+        std::cout << e << " ";
     }
-    std::cout << "\n";
+    std::cout << std::endl;
+
+    // Use iterator explicitly
+    std::deque<float>::iterator iter;       // Declare the iterator
+    std::cout << "myFltDeque: ";
+    for (iter = myFltDeque.begin(); iter != myFltDeque.end(); ++iter) {
+        // Access the container value using pointer syntax
+        std::cout << *iter << " ";
+    }
+    std::cout << std::endl;
 }
 
 

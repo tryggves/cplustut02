@@ -22,9 +22,11 @@ public:
 template <class CalcType>
 class TCalc {
 public:
-    CalcType add (CalcType a, CalcType b) const { return a+b; };
-    CalcType sub (CalcType a, CalcType b) const { return a-b; };
-    CalcType mul (CalcType a, CalcType b) const { return a*b; };
+    // Use const before reference to class <class CalcType>& reference
+    CalcType add (const CalcType& a, const CalcType& b) const { return a + b; };
+    CalcType sub (const CalcType& a, const CalcType& b) const { return a-b; };
+    // Here is the other way: declare parameter as rvalue reference
+    CalcType mul (CalcType&& a, CalcType&& b) const { return a*b; };
 };
 
 //Lot of typing - do it inline if oneliners such as above.
