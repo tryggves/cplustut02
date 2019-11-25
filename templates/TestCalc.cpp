@@ -6,7 +6,7 @@
 //
 
 
-#include <gmock/gmock.h>
+//#include <gmock/gmock.h>
 #include "gtest/gtest.h"
 #include "Calc.h"
 
@@ -23,4 +23,8 @@ protected:
 
 TEST_F(TestCalc, AddZero) {
     EXPECT_EQ(m_Calc.add(0.0, 0.0), 0.0);
+}
+
+TEST_F(TestCalc, AddIntegers) {
+    EXPECT_EQ(m_Calc.add(1,1), 2);
 }
