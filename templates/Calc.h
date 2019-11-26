@@ -5,6 +5,8 @@
 #ifndef CPLUSTUT02_CALC_H
 #define CPLUSTUT02_CALC_H
 
+#include <type_traits>      // See class TraitCalc
+
 // Try to code a specific class first an then refactor to template class
 class Calc {
 public:
@@ -35,5 +37,20 @@ public:
 template <class CalcType> CalcType TCalc<CalcType>::add(CalcType a, CalcType b) { return a+b; }
 template <class CalcType> CalcType TCalc<CalcType>::sub(CalcType a, CalcType b) { return a-b; }
 //*/
+
+/**
+ * Here is an example of using traits for conditional handling of parameters
+ * of different type - again the calculator
+ */
+template <class T>      // T can be pointer
+class TraitCalc {
+public:
+    // Function will call the implementation method, one for pointers and another for non-pointers
+    void add (const T& a, const T& b, T& result) const { addImpl(a, b, result, std::is_pointer<T>());  };
+
+private:
+    void addImpl(const T& a, const T& b, T& res, std::true_type) const { *res = (*a + *b); };
+    void addImpl(const T& a, const T& b, T& res,  std::false_type) const { res = a + b; };
+};
 
 #endif //CPLUSTUT02_CALC_H

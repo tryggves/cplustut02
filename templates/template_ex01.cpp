@@ -28,4 +28,20 @@ int main(int argc, char* argv[]) {
     std::cout << "2.0 + 3.0 = " << myFloatCalc.add(2.0, 3.0) << std::endl;
     std::cout << "2.0 - 3.0 = " << myFloatCalc.sub(2.0, 3.0) << std::endl;
     std::cout << "2.0 * 3.0 = " << myFloatCalc.mul(2.0, 3.0) << std::endl;
+
+    std::cout << "EXAMPLE 3: Type traits class" << std::endl;
+    int val1 = 2;
+    int val2 = 3;
+    int result;
+    int *pVal1 {&val1}, *pVal2 {&val2}, *pRes {&result};
+
+    // Pointer arguments
+    TraitCalc<int*> myPtrCalc;
+    myPtrCalc.add(pVal1, pVal2, pRes);
+    std::cout << "pVal1 + pVal2 = " << result << std::endl;
+
+    // Non-pointer arguments
+    TraitCalc<int> myTraitCalc;
+    myTraitCalc.add(10, 20, result);
+    std::cout << "10 + 20 = " << result << std::endl;
 }
