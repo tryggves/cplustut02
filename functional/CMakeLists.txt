@@ -1,0 +1,1 @@
+add_executable(my_functional_ex my_functional_ex.cpp MyFunctionalClass.cpp)
