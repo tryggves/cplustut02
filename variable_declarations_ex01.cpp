@@ -41,7 +41,9 @@ int main(int argc, char **argv) {
     pInt = &c;
     std::cout << "Address of c pointer pInt=" << pInt << std::endl;
     std::cout << "Value c of pointer pInt=" << *pInt << std::endl;
-    /// This will not compile either
+    /// This will not compile either because pInt is declared to point to constant integer
+    /// Even though the pointer itself can change to point to different integers, the values
+    /// of these integers cannot be changed through dereferencing this pointer.
     /// *pInt = 10;
 
     /// Pointer qInt is declared to point at read/write integer variable
@@ -52,5 +54,9 @@ int main(int argc, char **argv) {
     *qInt = 10;
     std::cout << "Address of c pointer qInt=" << qInt << std::endl;
     std::cout << "Value c of pointer qInt=" << *qInt << std::endl;
+
+    /// What happens if we change pointer qInt to point to a const int variable
+    /// This will not compile - have to declar the pointer to point to const int.
+    // qInt = &b;
 
 }
