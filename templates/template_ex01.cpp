@@ -4,7 +4,7 @@
 # include <iostream>
 #include "Calc.h"
 
-// Try to code a specific class first an then refactor to template class
+// Try to code a specific class first and then refactor to template class
 // Coded class Calc with is an integer calculator
 
 // Now try to generalize by allowing other types for the operations'

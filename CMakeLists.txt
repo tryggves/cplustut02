@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.16...3.19)
 project(cplustut02)
 
 set(CMAKE_CXX_STANDARD 14)

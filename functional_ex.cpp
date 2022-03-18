@@ -42,6 +42,7 @@ class MyFoo {
 /**
  * To call a member function you need a pointer to the object of the class
  * that defines the function and the function pointer.
+ * THIS SIMULATES STD::BIND() - THE FUNCTION IS A CALLABLE OBJECT
  * @param foo1 Pointer to object of class MyFoo
  * @param foo2 Pointer to object of class MyFoo
  * @param fun Pointer to member function of class MyFoo with signature void(*)() such as f() and g() above
