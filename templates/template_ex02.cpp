@@ -36,8 +36,10 @@ public:
     };
 
     // Here is how to overload the output stream operator
+    // Overload: same function, different parameters or types of parameters
+    // Override: same function, in derived (sub-) class
     friend std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) {
-    // std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) {
+    // std::ostream& operator<<( std::ostream& output, const MyNumContainer& mNC ) const {
         output << mNC.m_value;
         return output;
     }
@@ -52,11 +54,13 @@ int main(int argc, char **argv) {
 
     std::cout << "EXAMPLE: Vector container of integers" << std::endl;
     std::vector<int> intVec;
-    int i;
+
+    // Use auto in for loop deriving type of i from initialization rather than declaring i here
+    // int i;
 
     std::cout << "Size of intVec: " << intVec.size() << std::endl;
 
-    for (i=0; i<10; i++) {
+    for (auto i=0; i<10; i++) {
         intVec.push_back(i);
     }
     std::cout << "Size of intVec: " << intVec.size() << std::endl;
@@ -71,13 +75,16 @@ int main(int argc, char **argv) {
     // Try out the custom class example
     std::cout << "EXAMPLE 2: CUSTOM CLASS IN VECTOR" << std::endl;
     std::vector<MyNumContainer<int>> mNCvec;
-    for (i=0; i<10; i++) {
-        MyNumContainer<int> mnc(i);     // Calls the constructor of class MyNumContainer
+    std::cout << "Size of mNCvec: " << mNCvec.size() << std::endl;
+    for (auto i=0; i<10; i++) {
+        MyNumContainer<int> mnc(i+10);     // Calls the constructor of class MyNumContainer
         mNCvec.push_back(mnc);
     }
     std::cout << "Size of mNCvec: " << mNCvec.size() << std::endl;
     std::cout << "mNCvec contains: ";
-    for (MyNumContainer<int> x : mNCvec) {
+    // We can use auto here to initialize x from iterator
+    // for (MyNumContainer<int> x : mNCvec) {
+  for (auto x : mNCvec) {
         std::cout << x << " ";
     }
     std::cout << std::endl;
@@ -88,19 +95,22 @@ int main(int argc, char **argv) {
     std::cout << "Size of mNCPvec: " << mNCPvec.size() << std::endl;
     // Pointer variable
     MyNumContainer<int>* mNCP;
-    for (i=0; i<10; i++) {
-        mNCP = new MyNumContainer<int>(i);  // Instantiate class on heap
+    for (auto i=0; i<10; i++) {
+        mNCP = new MyNumContainer<int>(i+20);  // Instantiate class on heap
         mNCPvec.push_back(mNCP);
     }
     std::cout << "Size of mNCPvec: " << mNCPvec.size() << std::endl;
     std::cout << "mNCPvec contains: ";
-    for (MyNumContainer<int>* xp:mNCPvec) {
+    // We can use auto here to infer type of xp from the iterator
+    // for (MyNumContainer<int>* xp:mNCPvec) {
+    for (auto* xp:mNCPvec) {
         std::cout << *xp << " ";
     }
     std::cout << std::endl;
 
     /*
     // Can we use a reference to the contained elements
+    // Unsure if & makes sense in this context.
     // THIS WILL NOT COMPILE - CANNOT CONVERT FROM INT POINTER TO INT REFERENCE
     for (MyNumContainer<int>& xr:mNCPvec) {
         std::cout << xr << " ";

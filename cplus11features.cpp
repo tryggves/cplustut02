@@ -4,16 +4,26 @@
 
 #include <iostream>
 
-void my_func(std::string *p_string) {
-  if (p_string == nullptr) {
-    std::cout << "Nullpointer parameter\n";
-  } else {
-    // This prints the pointer address
-    std::cout << "Parater is " << p_string << std::endl;
-    // This prints the value
-    std::cout << "Parater value is \"" << *p_string << "\"" << std::endl;
+class MyFeaturesClass {
+public:
+  void my_func(std::string *p_string) {
+    if (p_string == nullptr) {
+      std::cout << "Nullpointer parameter\n";
+    } else {
+      // This prints the pointer address
+      std::cout << "Parameter pointer is " << p_string << std::endl;
+      // This prints the value
+      std::cout << "Parameter value is \"" << *p_string << "\"" << std::endl;
+    }
   }
-}
+
+  // Overload the function
+  void my_func(std::nullptr_t aNullptr) {
+    std::cout << "Nullpointer parameter ended in overloaded class\n";
+  }
+};
+
+
 
 
 int main(int argc, char **argv) {
@@ -23,9 +33,10 @@ int main(int argc, char **argv) {
   std::cout << "=== Number of arguments: " << argc << std::endl;
   std::cout << "==========================================================================" << std::endl;
 
-  my_func(nullptr);
+  MyFeaturesClass myFeaturesClass;
+  myFeaturesClass.my_func(nullptr);
 
   std::string my_hello = "Hello world";
-  my_func(&my_hello);
+  myFeaturesClass.my_func(&my_hello);
 
 }
