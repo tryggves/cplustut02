@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
   std::cout << "intVec contains: ";
 
   // Notice the compact syntax for accessing values of vector in the loop.
-  for (int x:intVec) {
+  for (auto x:intVec) {
     std::cout << x << " ";
   }
   std::cout << std::endl;
