@@ -22,6 +22,7 @@ add_executable(initialization_ex initialization_ex.cpp)
 add_executable(variable_declarations_ex01 variable_declarations_ex01.cpp)
 # add_executable(cplus11features cplus11features.cpp time_ex.cpp)
 add_executable(time_ex time_ex.cpp)
+add_executable(lambda_ex01 lambda_ex01.cpp)
 
 add_subdirectory(templates)
 add_subdirectory(smartpointers)

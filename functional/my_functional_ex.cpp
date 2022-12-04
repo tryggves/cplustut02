@@ -14,7 +14,7 @@ public:
     std::cout << "Callback implementation class";
     std::cout << " a=" << a << " b=" << b << " c=" << c << std::endl;
   }
-} callbackInstance;
+} callbackInstance;   // Here we declare variable callbackInstance
 
 int main (int argc, char** argv) {
   std::cout << "==========================================================================" << std::endl;
