@@ -13,6 +13,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 # )
 # FetchContent_MakeAvailable(googletest)
 
+# find_package(ZeroMQ  REQUIRED)
 find_package(cppzmq  REQUIRED)
 
 add_executable(functional_ex functional_ex.cpp)
