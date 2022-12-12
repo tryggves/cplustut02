@@ -1,0 +1,1 @@
+add_executable(typecast_ex01 typecast_ex01.cpp)
