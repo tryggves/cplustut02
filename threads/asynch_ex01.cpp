@@ -42,11 +42,14 @@ namespace {
     struct sigaction sig;
 
     for(int i=0; quitSignals[i]>0; i++) {
-      sigaction(quitSignals[i], NULL, &sig);
+      // This call stores the current signal handler into sig - which currently makes
+      // no sense since that variable is overwritten below..
+      // sigaction(quitSignals[i], NULL, &sig);
 
+      // Set up the new signal handler
       sig.sa_handler=Adapter::StopAll;
       sig.sa_flags=0;
-
+      // Install the new signal handler
       sigaction(quitSignals[i], &sig, NULL);
     }
   }
@@ -70,6 +73,7 @@ namespace {
       
       if (countIterations==10) {
         // Run aynchronous thread
+        // asyncStatus is a future<void> object to synchronized between this thread and the asyncRunTask
         asyncStatus = std::async(std::launch::async, &Adapter::asyncRunTask, this, 100);
 
         // This call makes the  main thread wait until the asyncRunTask has finished.
