@@ -1,0 +1,3 @@
+add_executable(references_ex01 references_ex01.cpp)
+add_executable(references_ex02 references_ex02.cpp)
+add_executable(references_ex03 references_ex03.cpp)

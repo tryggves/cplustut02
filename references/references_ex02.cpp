@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 
     /*
     a*b = 20;       // will not compile as a*b is a rvalue
-    //*/
+    // */
     std::cout << "=== EXAMPLE 1" << std::endl;
     int c = a*b;
     std::cout << "a = " << a << "\t\tb = " << b << std::endl;

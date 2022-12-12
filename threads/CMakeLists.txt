@@ -1,6 +1,8 @@
 add_executable(thread_ex01 thread_ex01.cpp)
 target_link_libraries(thread_ex01 pthread)
 
+add_executable(thread_ex02 thread_ex02.cpp)
+
 add_executable(asynch_ex01 asynch_ex01.cpp)
 target_link_libraries(asynch_ex01 pthread)
 
