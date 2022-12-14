@@ -1,0 +1,1 @@
+add_executable(filewrite filewrite.cpp)
