@@ -1,11 +1,13 @@
 //
 // Created by Tryggve Sørensen on 11/12/2022.
 //
+// NOT COMPlETE!
 
 #include <iostream>
 #include <string>
 
 class MyCat {
+// struct MyCat {
   std::string m_name{""};
 public:
   MyCat(std::string name) : m_name{name}
