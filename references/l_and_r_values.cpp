@@ -2,11 +2,13 @@
 // Created by Tryggve Sørensen on 07/01/2023.
 //
 // http://thbecker.net/articles/rvalue_references/section_01.html
+// https://accu.org/journals/overload/12/61/kilpelainen_227/
 
 #include <iostream>
 
 int my_int = 38;
 
+// Define function foo() for linking in the example code
 int& foo() {
   // This will compile as my_int is lvalue
   return my_int;
@@ -19,6 +21,11 @@ int& foo() {
   int foo_int = 100;
   return foo_int;
   // */
+}
+
+// Define function foobar() for linking in the example code
+int foobar() {
+  return 100321;
 }
 
 int main(int argc, char* argv[]) {
@@ -49,14 +56,21 @@ int main(int argc, char* argv[]) {
 
   // Function returns reference to int (int&) which is global variable my_int (defined above)
   foo() = 42; // ok, foo() is an lvalue. my_int changes value to 42
-  int* p1 = &foo(); // ok, foo() is an lvalue.
+  int* f_p1 = &foo(); // ok, foo() is an lvalue.
 
   // Define pointer to foo function
   // https://www.cprogramming.com/tutorial/function-pointers.html
-  int& (*p2)() = &foo; // Note that the function name is a lvalue (associated with memory location)
+  int& (*f_p2)() = &foo; // Note that the function name is a lvalue (associated with memory location)
   // call the function - note that the function call p2() is an rvalue
-  int result1 = p2();
+  int result1 = f_p2();
   // Same as above
-  int& result2 = p2();
+  int& result2 = f_p2();
 
+  // rvalues:
+  //
+  int foobar();
+  int j = 0;
+  j = foobar(); // ok, foobar() is an rvalue
+  // int* p2 = &foobar(); // error, cannot take the address of an rvalue
+  j = 42; // ok, 42 is an rvalue
 }
