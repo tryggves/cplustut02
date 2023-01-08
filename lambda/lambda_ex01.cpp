@@ -13,8 +13,8 @@
 
 // Lambda function with parameters
 auto lambdaF1 = [] (int x) { std::cout << "x is: " << x << std::endl; };
-// Return something from lanbda function
-auto lambdaSum = [] (int x, int y) { return x=y; };
+// Return something from lanbda function, notice the return type can be declared with ->
+auto lambdaSum = [] (int x, int y) -> int { return x=y; };
 
 int main (int argc, char **argv) {
   std::cout << "==========================================================================" << std::endl;
@@ -49,6 +49,4 @@ int main (int argc, char **argv) {
   std::cout << "Before: " << l_y << std::endl;
   l_func_assign();
   std::cout << "After: " << l_y << std::endl;
-
-
 }
